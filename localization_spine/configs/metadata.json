@@ -1,0 +1,93 @@
+{
+    "schema": "https://github.com/Project-MONAI/MONAI-extra-test-data/releases/download/0.8.1/meta_schema_20220324.json",
+    "version": "0.0.1",
+    "monai_version": "1.1.0",
+    "pytorch_version": "1.13.1+cu116",
+    "numpy_version": "1.21.6",
+    "optional_packages_version": {
+        "nibabel": "3.0.2",
+        "pytorch-ignite": "0.4.10"
+    },
+    "task": "Localization spine",
+    "description": "A pre-trained model for volumetric (3D) segmentation of the spine from CT image",
+    "authors": "Deepa Krishnaswamy and MONAI team",
+    "copyright": "Copyright (c) MONAI Consortium",
+    "data_source": "VERSE dataset",
+    "data_type": "nibabel",
+    "image_classes": "single channel data, intensity scaled to [0, 1]",
+    "label_classes": "single channel data, 1-25 is spine vertebra, 0 is everything else",
+    "pred_classes": "25 channels OneHot data, channel 1-25 is spine vertebra, channel 0 is background",
+    "intended_use": "This is an example, not to be used for diagnostic purposes",
+    "references": [
+        "Please refer to the MONAI Label app from Radiology: https://github.com/Project-MONAI/MONAILabel/blob/main/sample-apps/radiology/lib/configs/localization_spine.py"
+    ],
+    "network_data_format": {
+        "inputs": {
+            "image": {
+                "type": "image",
+                "format": "hounsfield",
+                "modality": "CT",
+                "num_channels": 1,
+                "spatial_shape": [
+                    96,
+                    96,
+                    96
+                ],
+                "dtype": "float32",
+                "value_range": [
+                    0,
+                    1
+                ],
+                "is_patch_data": true,
+                "channel_def": {
+                    "0": "image"
+                }
+            }
+        },
+        "outputs": {
+            "pred": {
+                "type": "image",
+                "format": "segmentation",
+                "num_channels": 25,
+                "spatial_shape": [
+                    96,
+                    96,
+                    96
+                ],
+                "dtype": "float32",
+                "value_range": [
+                    0,
+                    1
+                ],
+                "is_patch_data": true,
+                "channel_def": {
+                    "0": "background",
+                    "1": "C1",
+                    "2": "C2",
+                    "3": "C3",
+                    "4": "C4",
+                    "5": "C5",
+                    "6": "C6",
+                    "7": "C7",
+                    "8": "Th1",
+                    "9": "Th2",
+                    "10": "Th3",
+                    "11": "Th4",
+                    "12": "Th5",
+                    "13": "Th6",
+                    "14": "Th7",
+                    "15": "Th8",
+                    "16": "Th9",
+                    "17": "Th10",
+                    "18": "Th11",
+                    "19": "Th12",
+                    "20": "L1",
+                    "21": "L2",
+                    "22": "L3",
+                    "23": "L4",
+                    "24": "L5"
+                }
+            }
+        }
+    }
+}
